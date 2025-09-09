@@ -126,6 +126,16 @@ def coerce_to_fixed_flow(data):
 
 def json_to_docx_bytes(data: dict, docx_name_hint="lesson_plan") -> bytes:
     doc = Document()
+
+    sec = doc.sections[0]
+    sec.page_width = Cm(21)  # A4 宽 21cm
+    sec.page_height = Cm(29.7)  # A4 高 29.7cm
+    sec.top_margin = Cm(2.54)  # 上 2.54cm
+    sec.bottom_margin = Cm(2.54)  # 下 2.54cm
+    sec.left_margin = Cm(1.91)  # 左 1.91cm
+    sec.right_margin = Cm(1.91)  # 右 1.91cm
+
+
     table = doc.add_table(rows=0, cols=3, style="Table Grid")
     table.autofit = True
 
